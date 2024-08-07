@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客文章</title>
+    <style>
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --button-color: #757575;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-color: #121212;
+                --text-color: #ffffff;
+                --button-color: #9e9e9e;
+            }
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 65%;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+                padding: 10px;
+            }
+        }
+        .content {
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--button-color);
+            color: var(--background-color);
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+        .back-button:hover {
+            background-color: #616161;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-color);
+        }
+        .copy-button {
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 0.8em;
+            vertical-align: super;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 id="article-title"></h1>
+            <div id="article-content"></div>
+        </div>
+    </div>
+    <button class="back-button" onclick="window.close()">返回</button>
+
+    <script>
+        const article = { title: '为什么反对网证网号', content: '最近，中华人民共和国公安部、国家互联网信息办公室等有关部门经充分调研论证，起草了《国家网络身份认证公共服务管理办法（征求意见稿）》。网号是一个新的用于与个人信息进行关联的证件号。也就是在互联网上的身份证号。网证，是指承载网号及自然人非明文身份信息的网络身份认证凭证。也就是网络上的身份证。\n\n而其声称这样做的原因是为了达到方便人民群众使用、保护个人信息安全、推进网络可信身份的目的。而实现这个目标是通过用网证代替其他的个人信息验证途径：自然人在互联网服务中依法需要登记、核验真实身份信息时，可通过国家网络身份认证APP自愿申领并使用“网号”“网证”进行非明文登记、核验，无需向互联网平台等提供明文个人身份信息。\n\n如果从这个角度，网证其实也不能达到预期的解决问题的效果，保护每个人的隐私权。因为中国本来就是要求互联网平台进行后台实名制的，而后台实名制是通过手机号验证，由于所有的中国发行的手机号都是与每个人的个人信息关联的，所以也就达到了最后的后台实名制的效果。\n\n在这一过程中，你的手机号是直接告诉平台的，而你又会在平台上发送各种可能的信息。这些信息看似琐碎，但是对于平台的大数据画像够用。平台只需要将这个画像与用户的手机号关联，其他的平台就能通过在他们那里的手机号与这个平台卖给他们的数据关联，就实现了跨平台的信息交换。\n\n但是换成网络身份证后这些问题也并不能被解决，反而实际上加深了问题。没有解决问题是因为当网证与个人信息有了关联，其也就与原来的方式无异了，无论这个信息关联是不是明文的，这最多只是增加互联网公司获取信息的成本。而加深问题是，本来一个人其实是可以注册多个手机号的，而这些手机号在互联网平台看来是无关的。但是由于每个人都只有一个网号，这就使原来的信息都关联到一个信息上，反而是为平台打通了获取一个具体的个人的信息的渠道。\n\n你可能会问，这个网证只是自愿申办的，只要不办就行。这就要涉及到这个证件的根本内容了，到底为什么要新建网证网号机制？我认为，这其实是在加强网信办网络的审查的权利。因为在本来的后台实名制中，公安部门拥有其中的的权力。办理电话卡所需的认证是通过身份证进行的，而身份证是公安局所管理的。\n\n所以在本来，在网络上的对言论的打击有两种流程。一种是平台为了避免国家惩罚，在压力下自己创建的审核机制进行删除、封号等处罚。另一种就是公安部门发现了他们认为危害社会的言论，根据其后台的实名信息，上门威胁你删除，或是请你到公安局谈话并要求删除、道歉等。前者多用于开放式的信息平台，比如微博、知乎、bilibili等，而后者用于封闭式的信息平台，比如微信、QQ。\n\n问题就在这里，中国中央网络安全和信息化委员会办公室的权力比起公安局的权力少多了，因为他并没有直接的访问每个个人信息的权利，他只能督促平台进行监督。这显然与网信办一直以来的扩权不符。于是便出现了这条新的征求意见稿。\n\n果然，在征求意见稿第三条就明文写着：“国务院公安部门、国家网信部门依照各自法定职责，负责国家网络身份认证公共服务的监督管理，监督、指导公共服务平台依法落实数据安全和个人信息保护义务。”这实际上就是将本来只属于公安的个人信息变成了网信办和公安共同所有。\n\n也就是说，这就是网信办的一次扩权。而扩权的原因是网信部光靠原来的手段对言论的管控已经不足了。在网络上，原本就有着网信办的对平台的监管而间接的监管着言论。但是现在，这一体系正在失效。越来越多的人因为各种原因（比如失业、裁员）在网络上通过发布政府不想听见的言论来缓解压力，使得原本的自我审查体系部分崩溃。\n\n而这一次的扩权导致的将会是言论环境的再一次紧收。因为你的个人信息与你的言论更加挂钩，减少网信办定位到个人的难度，增加对个人的警告和处罚常态化的可能性。还因为当人们知道这一点后，自己就会产生自我的审查。就像1984，老大哥并不需要一直看着你。只要你产生了恐惧，恐惧就会时刻限制你。\n\n而到这，你就理解了为什么“自愿”其实并不可能。因为这次的立法的目的就是为了更多的控制，而为了更多的控制就一定要推行下去。所以自愿实际上只是一个挡箭牌，挡住了那些批评，因为看似人们可以选择。但是当年的健康吗、行程码就是强制的吗？\n\n如果以后你没有“自愿”申请网证，你就不能使用国内局域网的任何网络服务，你还会选择，还能选择吗？如果生活中的互联网使用都要验证网号，你会选择不吗？我们已经没有脱离网络的能力了，而这正是为什么我要反对这次的网证，因为实际上自由的使用互联网已经成为了一种被人们争取来的权利，而网证就是在本来已经不那么自由的网络环境再添新的监控。\n\n这不是对本来已经毫无生气，无药可救的中文互联网的落井下石，雪上加霜吗？就像这明明是公开征求意见稿，而提出反对网证的@劳东燕（清华大学刑法学教授）提出反对意见后，体制内部门组织安排下属转发对其的大字报。这又是何其的讽刺。对于中国现在的缺乏活力的社会，我们需要的是更自由而不是更约束。我们需要的不是更强的监管，而是思想的解放。我们不需要假借隐私保护推行网证来加强舆情监控，我们需要真正的保护隐私的匿名系统，保护自由的平台。\n\n我也不知道这篇文章可以影响多少，不过肯定不足以组织这次的网证的推行。那么对于在国内的人（比如你我）可以有以下的措施应对：\n\n1.不要抱着尝鲜的心态下载网络身份证app，更不要用它去验证已经验证过的平台账号，除非到万不得已不下载，不办理。\n2.未成年人未满14岁的，办理网证要征得其父母或者其他监护人同意，并由其父母或者其他监护人代为申领。所以这是拒绝网证的好方法。\n3.有条件的使用靠谱的代理服务（VPN等）翻越网络长城，将日常生活实用的软件寻找相应的安全的匿名的开源的软件代替。\n4.有条件的可以卸载国内已被上述第3条替代的软件（或是不更新），尽量使用苹果设备。\n5.有条件的可以将微信通过更换境外手机号转移到外区（WeChat），避免网证关联。\n\n\n[link:征求意见稿原文链接（点击此处）](https://www.cac.gov.cn/2024-07/26/c_1723675813897965.htm)', pinned: 2421 };
+
+        function processContent(content) {
+            return content
+                .replace(/\[link:(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+                .replace(/\[copy-broad:(.*?)\]/g, '$1<span class="copy-button" onclick="copyText(\'$1\')">📋</span>');
+        }
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('文本已复制到剪贴板');
+            }).catch(err => {
+                console.error('无法复制文本: ', err);
+            });
+        }
+
+        function loadArticle() {
+            document.title = article.title;
+            document.getElementById('article-title').textContent = article.title;
+            document.getElementById('article-content').innerHTML = processContent(article.content);
+        }
+
+        window.onload = loadArticle;
+    </script>
+</body>
+</html>
